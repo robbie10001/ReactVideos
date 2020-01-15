@@ -29,6 +29,12 @@ class SearchBar extends React.Component {
         //we are going to make sure the browser does not automatically try to submit the form, 
         //anytime the user actually passed data in. 
         event.preventDefault();
+        //we want to make sure we call the below prop anytime the user submits the form. 
+        //to do this,  we say this.props.onFormSubmit; 
+        //and we call that with (this.state.term) this is so our parent component is told what the current search term is. 
+        //now wheneve we submit the form the function onTermSubmit (App.js) will be called, 
+        //with the appropriate search term (term) (app.js)
+        this.props.onFormSubmit(this.state.term); 
     };
 
 //render method 
