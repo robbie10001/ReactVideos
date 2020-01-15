@@ -19,9 +19,11 @@ export default axios.create({
 //
     params: {
         part: "snippet",
-        maxResults: 5, 
+        type: 'video',
+        maxResults: 5,
+        key: KEY
 //our key comes from our const KEY 
-        key: KEY, 
+
 
 
     }
