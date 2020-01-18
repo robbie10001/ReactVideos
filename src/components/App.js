@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar"; 
-import youtube from "../apis/youtube"
+import youtube from "../apis/youtube"; 
+import VideoList from "./VideoList";
 
 class App extends React.Component {
 
@@ -44,7 +45,7 @@ const response = await youtube.get("/search", {
 Anytime we add a prop or callback name, to a component that we manually ourselves create, 
 we can use any prop name that we want to use. onFormSubmit makes sense in terms of our application build */} 
             <SearchBar onFormSubmit = {this.onTermSubmit} />
-            i have {this.state.videos.length } videos. 
+            <VideoList videos= {this.state.videos} /> 
         </div>
         );
     }
