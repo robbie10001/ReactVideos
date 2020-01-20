@@ -8,6 +8,7 @@ class App extends React.Component {
 //anytime our component is created, its going to have a this.state.videos property that starts out empty. 
 //anytime a user eventually searches something, and we get back a list of videos, 
 //we will go ahead and take that list of videos and set them on our state. 
+ //we create a second property for our state called selectedVideo   
     state = { videos: [], selectedVideo: null }; 
     
 //this is going to be called with some search term string.
@@ -33,7 +34,8 @@ const response = await youtube.get("/search", {
     //this is the list of videos that we care about. 
     this.setState( { videos: response.data.items })
     };
-
+//this is a call back for our second argument of state. 
+//the video object is the object we fetch from the youtube api.
     onVideoSelect = (video) => {
         console.log("From the app", video);
     }
@@ -46,7 +48,9 @@ const response = await youtube.get("/search", {
         <div className="ui container">
 {/* On our searchbar, we are going to call our OnTermSubmit as a prop
 Anytime we add a prop or callback name, to a component that we manually ourselves create, 
-we can use any prop name that we want to use. onFormSubmit makes sense in terms of our application build */} 
+we can use any prop name that we want to use. onFormSubmit makes sense in terms of our application build 
+onVideoSelect is a reference to our callback, as a property. 
+*/} 
             <SearchBar onFormSubmit = {this.onTermSubmit} />
             <VideoList onVideoSelect={this.onVideoSelect} videos= {this.state.videos} /> 
         </div>
