@@ -26,7 +26,7 @@ const VideoList = ({ videos }) => {
         return <VideoItem video={video} />; 
     });
 //instead of returning props.videos within our div, we can destructure the videos property out of the below object.
-    return <div>{renderedList}</div>
+    return <div className="ui relaxed divided list">{renderedList}</div>
 };
 
 export default VideoList; 
