@@ -8,7 +8,7 @@ import VideoItem from "./VideoItem";
 //the map method creates a new array with the results of calling a function for every array element. 
 //we will then render one single video item for every item in our videos component. 
 //we create a functioal component that takes the array of videos
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, onVideoSelect }) => {
 
 //the videos.map(video)- this is an array taken from the app component. 
 //we then map over it. We taken the inner function, that we pass to map a single argument called video. 
@@ -23,7 +23,7 @@ const VideoList = ({ videos }) => {
         //this means in our VideoItem.js our VideoItem cointains a video property.
         //this has all the information about the particular video that we want to show as a list. 
         //the video object {video} is what we got back from the yotube API 
-        return <VideoItem video={video} />; 
+        return <VideoItem onVideoSelect={onVideoSelect} video={video} />; 
     });
 //instead of returning props.videos within our div, we can destructure the videos property out of the below object.
     return <div className="ui relaxed divided list">{renderedList}</div>

@@ -8,7 +8,7 @@ class App extends React.Component {
 //anytime our component is created, its going to have a this.state.videos property that starts out empty. 
 //anytime a user eventually searches something, and we get back a list of videos, 
 //we will go ahead and take that list of videos and set them on our state. 
-    state = { videos: [] }; 
+    state = { videos: [], selectedVideo: null }; 
     
 //this is going to be called with some search term string.
 //the reason we have called this onTermSubmit is that inside of our SearchBar.js 
@@ -34,6 +34,9 @@ const response = await youtube.get("/search", {
     this.setState( { videos: response.data.items })
     };
 
+    onVideoSelect = (video) => {
+        console.log("From the app", video);
+    }
 //render method
     render() {
 //return method 
@@ -45,7 +48,7 @@ const response = await youtube.get("/search", {
 Anytime we add a prop or callback name, to a component that we manually ourselves create, 
 we can use any prop name that we want to use. onFormSubmit makes sense in terms of our application build */} 
             <SearchBar onFormSubmit = {this.onTermSubmit} />
-            <VideoList videos= {this.state.videos} /> 
+            <VideoList onVideoSelect={this.onVideoSelect} videos= {this.state.videos} /> 
         </div>
         );
     }
