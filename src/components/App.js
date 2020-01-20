@@ -53,8 +53,16 @@ we can use any prop name that we want to use. onFormSubmit makes sense in terms 
 onVideoSelect is a reference to our callback, as a property. 
 */} 
             <SearchBar onFormSubmit = {this.onTermSubmit} />
+            <div className="ui grid">
+                <div className="ui row">
+                    <div className="eleven wide column">
             <VideoDetail video={this.state.selectedVideo} />
+            </div>
+            <div className="five wide column">
             <VideoList onVideoSelect={this.onVideoSelect} videos= {this.state.videos} /> 
+            </div>
+                </div>
+            </div>
         </div>
         );
     }

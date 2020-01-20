@@ -25,7 +25,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
         //this has all the information about the particular video that we want to show as a list. 
         //the video object {video} is what we got back from the yotube API 
         //we now take our call back, and pass it into our video item {onVideoSelect}
-        return <VideoItem onVideoSelect={onVideoSelect} video={video} />; 
+        return <VideoItem key={video.id.videoId} onVideoSelect={onVideoSelect} video={video} />; 
     });
 //instead of returning props.videos within our div, we can destructure the videos property out of the below object.
     return <div className="ui relaxed divided list">{renderedList}</div>
