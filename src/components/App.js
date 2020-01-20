@@ -11,6 +11,10 @@ class App extends React.Component {
 //we will go ahead and take that list of videos and set them on our state. 
  //we create a second property for our state called selectedVideo   
     state = { videos: [], selectedVideo: null }; 
+
+componentDidMount() {
+    this.onTermSubmit("stargate");
+}
     
 //this is going to be called with some search term string.
 //the reason we have called this onTermSubmit is that inside of our SearchBar.js 
@@ -33,7 +37,10 @@ const response = await youtube.get("/search", {
         }
     })
     //this is the list of videos that we care about. 
-    this.setState( { videos: response.data.items })
+    this.setState( { 
+        videos: response.data.items,
+        selectedVideo: response.data.items[0]
+    })
     };
 //this is a call back for our second argument of state. 
 //the video object is the object we fetch from the youtube api.
