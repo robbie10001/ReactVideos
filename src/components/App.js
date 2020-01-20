@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar"; 
 import youtube from "../apis/youtube"; 
 import VideoList from "./VideoList";
+import VideoDetail from "./VideoDetail";
 
 class App extends React.Component {
 
@@ -37,7 +38,7 @@ const response = await youtube.get("/search", {
 //this is a call back for our second argument of state. 
 //the video object is the object we fetch from the youtube api.
     onVideoSelect = (video) => {
-        console.log("From the app", video);
+        this.setState({ selectedVideo: video })
     }
 //render method
     render() {
@@ -52,6 +53,7 @@ we can use any prop name that we want to use. onFormSubmit makes sense in terms 
 onVideoSelect is a reference to our callback, as a property. 
 */} 
             <SearchBar onFormSubmit = {this.onTermSubmit} />
+            <VideoDetail video={this.state.selectedVideo} />
             <VideoList onVideoSelect={this.onVideoSelect} videos= {this.state.videos} /> 
         </div>
         );
